@@ -9,7 +9,7 @@ DIST = ROOT / "dist"
 if DIST.exists():
     shutil.rmtree(DIST)
 DIST.mkdir()
-for name in ["index.html", "style.css", "script.js", "robots.txt", "sitemap.xml"]:
+for name in ["index.html", "style.css", "script.js", "robots.txt", "sitemap.xml", "_headers"]:
     shutil.copy2(ROOT / name, DIST / name)
 (DIST / "assets").mkdir()
 for name in ["img", "favicon.svg", "apple-touch-icon.png", "og.jpg"]:

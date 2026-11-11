@@ -9,7 +9,7 @@ Kết quả (ảnh gốc không bị thay đổi):
     assets/img/s/<tên>.webp      rộng 720px   (ô ảnh trên điện thoại)
     assets/img/m/<tên>.webp      rộng 1280px  (ô ảnh trên máy tính, ảnh đầu chương)
     assets/img/l/<tên>.webp      cạnh dài 2200px (xem toàn màn hình)
-    assets/img/hero-1200.webp, hero-2200.webp   ảnh mở đầu
+    assets/img/hero-640/1200/2200.webp   ảnh mở đầu
     assets/og.jpg                ảnh chia sẻ mạng xã hội (1200x630)
 
 Khi thêm ảnh mới, chạy lại lệnh trên. Chỉ cần đưa thư mục assets/img/ lên host
@@ -61,6 +61,7 @@ def main():
         save_webp(large, OUT / "l" / f"{stem}.webp", quality=82)
 
         if p.name == HERO:
+            save_webp(fit_width(im, 640), OUT / "hero-640.webp", quality=70)
             save_webp(fit_width(im, 1200), OUT / "hero-1200.webp", quality=76)
             save_webp(fit_width(im, 2200), OUT / "hero-2200.webp", quality=78)
             w, h = im.size
