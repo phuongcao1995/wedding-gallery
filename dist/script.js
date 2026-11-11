@@ -26,7 +26,7 @@ const WEDDING = {
   optimizedFolder: "assets/img/",     // ảnh nhẹ (WebP) tạo bởi tools/optimize_images.py; để trống nếu không dùng
 
   // Ảnh mở đầu. Giữ khớp với <link rel="preload"> trong index.html.
-  hero: { src: "DSC_2931.JPG", alt: "Chú rể hôn lên trán cô dâu bên tháp champagne", focus: "50% 35%" },
+  hero: { src: "DSC_2931.JPG", alt: "Chú rể hôn lên trán cô dâu bên tháp champagne", focus: "50% 6%" },
 
   // Ảnh cuối trang, cạnh lời cảm ơn.
   closing: { src: "DSC_3708.JPG", alt: "Cô dâu hôn lên má chú rể", w: 3933, h: 5900 },

@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /assets/images/
 
-Sitemap: https://YOUR-DOMAIN/sitemap.xml
+Sitemap: https://ngocphuong-nhatha-wedding.netlify.app/sitemap.xml
