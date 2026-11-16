@@ -1,0 +1,2 @@
+Dat file MP3 nhac cuoi vao day (vd: nhac-cuoi.mp3), roi sua music: "assets/music/nhac-cuoi.mp3" trong script.js.
+Nen dung file <= 4 MB (128 kbps), va chi dung nhac ban co quyen su dung.

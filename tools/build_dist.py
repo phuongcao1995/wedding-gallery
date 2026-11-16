@@ -12,8 +12,10 @@ DIST.mkdir()
 for name in ["index.html", "style.css", "script.js", "robots.txt", "sitemap.xml", "_headers"]:
     shutil.copy2(ROOT / name, DIST / name)
 (DIST / "assets").mkdir()
-for name in ["img", "favicon.svg", "apple-touch-icon.png", "og.jpg"]:
+for name in ["img", "music", "favicon.svg", "apple-touch-icon.png", "og.jpg"]:
     src = ROOT / "assets" / name
+    if not src.exists():
+        continue
     if src.is_dir():
         shutil.copytree(src, DIST / "assets" / name)
     else:

@@ -32,7 +32,7 @@ const WEDDING = {
   closing: { src: "DSC_3708.JPG", alt: "Cô dâu hôn lên má chú rể", w: 3933, h: 5900 },
 
   // Nhạc nền (tuỳ chọn). Ví dụ: "assets/music/bai-hat.mp3". Để trống để ẩn nút nhạc.
-  music: "",
+  music: "assets/music/perfect.m4a",
 
   // Ảnh đầu tiên của mỗi chương được hiển thị lớn cạnh tiêu đề.
   chapters: [
@@ -522,7 +522,7 @@ const WEDDING = {
     });
   }
 
-  /* ---------- Music (never autoplays) ---------- */
+  /* ---------- Music (on by default; browsers need a first tap/key to allow sound) ---------- */
 
   function setupMusic() {
     if (!WEDDING.music) return;
@@ -545,7 +545,21 @@ const WEDDING = {
       btn.hidden = true;
     });
 
+    // Default on: try immediately; if the browser blocks it, start on the first user gesture.
+    let userPaused = false;
+    const gestures = ["pointerdown", "pointerup", "click", "keydown", "touchstart", "touchend"];
+    const stopWaiting = () => gestures.forEach((g) => window.removeEventListener(g, onGesture, true));
+    function onGesture(e) {
+      if (e.target.closest && e.target.closest("#musicToggle")) { stopWaiting(); return; }
+      if (userPaused) { stopWaiting(); return; }
+      audio.play().then(stopWaiting).catch(() => {});
+    }
+    audio.play().catch(() => {
+      gestures.forEach((g) => window.addEventListener(g, onGesture, true));
+    });
+
     btn.addEventListener("click", () => {
+      userPaused = !audio.paused;
       if (audio.paused) {
         audio.play().catch((err) => console.warn("Wedding album: music couldn't start.", err));
       } else {
